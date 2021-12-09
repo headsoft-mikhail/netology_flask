@@ -1,0 +1,71 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000
+
+@email = a.mike@bk.ru
+@password = password
+@token = eyJhbGciOiJIUzUxMiIsImlhdCI6MTYzOTA4MTU1OSwiZXhwIjoxNjM5MDgxNjE5fQ.eyJlbWFpbCI6ImEubWlrZUBiay5ydSJ9.5DyKyYTCCLBHCqlZg1gXmRp_jnRDgmb4G0XzRM1NmZqlaagBycmm97_pelnA14kMBXhHZ7jJvomo1SOgzoYPGw
+
+###
+# создание пользователя
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "email": "hello@mail.ru",
+  "password": "password"
+}
+
+###
+# получение пользователя
+GET {{baseUrl}}/user/
+Content-Type: application/json
+Authorization: Basic {{email}}:{{password}}
+### 
+
+# получение пользователя
+GET {{baseUrl}}/user/
+Content-Type: application/json
+Authorization: Token {{token}}
+
+### 
+# получение всех постов
+GET {{baseUrl}}/posts/
+Content-Type: application/json
+
+###
+# получение одного поста
+GET {{baseUrl}}/posts/9
+Content-Type: application/json
+
+###
+# создание поста
+POST {{baseUrl}}/posts
+Content-Type: application/json
+Authorization: Basic {{email}}:{{password}}
+# Authorization: Token {{token}}
+
+{
+  "title": "IKEA sofa",
+  "text": "Urgently"
+}
+
+###
+# попытка изменить пост
+PUT {{baseUrl}}/posts/7
+Content-Type: application/json
+Authorization: Basic {{email}}:{{password}}
+Authorization: Token {{token}}
+
+{
+  "text": "Bargaining allowed"
+}
+
+###
+# попытка удалить пост
+DELETE {{baseUrl}}/posts/7
+Content-Type: application/json
+Authorization: Basic {{email}}:{{password}}
+
+
+
